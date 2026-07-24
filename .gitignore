@@ -1,0 +1,17 @@
+# 密钥与运行数据（严禁入仓/入交付物）
+backend/.env
+backend/data/
+backend/.venv/
+**/__pycache__/
+*.pyc
+
+# 前端
+frontend/node_modules/
+frontend/dist/
+
+# 注：backend/static/（前端构建产物）刻意纳入版本库，
+# 便于在没有 Node 的服务器上 clone 后直接部署。
+
+# 本机与临时
+.DS_Store
+*.log
