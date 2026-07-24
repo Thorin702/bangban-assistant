@@ -6,6 +6,21 @@
 
 ---
 
+## 本仓库不包含什么（重要）
+
+出于安全，以下内容**刻意不入版本库**，克隆后需自行准备：
+
+| 缺失项 | 说明 | 如何获得 |
+|---|---|---|
+| `backend/.env` | 政策检索密钥 `DKNOWC_API_KEY` | 参照 `backend/.env.example` 新建并填入自己的 Key |
+| 生成模型 API Key | qwen3-32b / DashScope 等 | 启动后在 **后台管理 → 功能与参数 → 生成模型接入** 填入并测试连接（存数据库，不入库文件） |
+| `backend/data/cases.db` | 历史工单类案库（类案经验 + 办件研判依赖它） | 用 `scripts/ingest_cases.py` 从**已授权**的工单数据源现场重建 |
+| `backend/data/app.db` | 账号、留痕、后台配置 | 首次启动自动创建；跑 `python -m app.seed` 生成管理员账号 |
+| `backend/data/jwt.secret` | 会话签名密钥 | 首次启动自动生成（或用 `BB_JWT_SECRET` 环境变量指定） |
+| `backend/.venv`、`frontend/node_modules` | 依赖 | 按下方步骤重建 |
+
+> 前端构建产物 `backend/static/` **已包含**在仓库中，因此在没有 Node 的服务器上 clone 后也能直接跑起来；只有改动前端源码时才需要 `npm run build`。
+
 ## 快速启动
 
 ```bash
